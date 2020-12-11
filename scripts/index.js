@@ -142,7 +142,25 @@ const randomDiceOrder = () => {
         origNbr.splice(index,1);
 
     }
-    console.log(newNbr);    
-}
+    return(newNbr);    
+};
 
-randomDiceOrder();
+// random nbr in dice
+const randomRoll = () => {
+    return(Math.floor((Math.random() * 6) + 1));
+};
+
+// create the final array
+const createArray = () => {
+    let finalArray = [];
+
+    let diceOrder = randomDiceOrder();
+    
+    for (let i = 0; i < diceOrder.length; i++){
+        let dice = randomRoll();
+
+        finalArray.push(diceArray[diceOrder[i]][dice]);
+    }
+    return(finalArray);
+};
+createArray();
