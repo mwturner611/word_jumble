@@ -1,0 +1,23 @@
+{
+  "name": "word_jumble",
+  "version": "1.0.0",
+  "description": "This app provides a grid of letters and timer to compete with your friends writing words as quick as you can!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass ./sass/index.scss ./css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwturner611/word_jumble.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwturner611/word_jumble/issues"
+  },
+  "homepage": "https://github.com/mwturner611/word_jumble#readme",
+  "dependencies": {
+    "sass": "^1.30.0"
+  }
+}
