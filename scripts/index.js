@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 let diceArray = {
     1:{
         1:"B",
@@ -150,6 +152,27 @@ const randomRoll = () => {
     return(Math.floor((Math.random() * 6) + 1));
 };
 
+// put the letters on the screen
+const letter2Grid = () => {
+
+    let array = JSON.parse(window.localStorage.getItem("scramble"));
+
+    if (array){
+        for (let i = 1; i < 17; i++){
+            let id = 'd'+ i;
+            let letter = array[i-1];
+            document.getElementById(id).innerHTML=`${letter}`
+        };
+    }
+    else{
+        for (let i = 1; i < 17; i++){
+            let id = 'd'+ i;
+            let letter = 'W';
+            document.getElementById(id).innerHTML=`${letter}`
+        };
+    };  
+};
+
 // create the final array
 const createArray = () => {
     let finalArray = [];
@@ -161,6 +184,9 @@ const createArray = () => {
 
         finalArray.push(diceArray[diceOrder[i]][dice]);
     }
-    return(finalArray);
+    window.localStorage.setItem("scramble",JSON.stringify(finalArray));
 };
 createArray();
+letter2Grid();
+
+});
