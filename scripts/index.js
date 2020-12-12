@@ -186,7 +186,40 @@ const createArray = () => {
     }
     window.localStorage.setItem("scramble",JSON.stringify(finalArray));
 };
-createArray();
-letter2Grid();
+
+// const timer = () => {
+    
+//     let timer = $('#timer');
+//     let time = $('<h3></h3>')
+//         .text("Time Remaining: 3:00")
+//         .appendTo(timer);
+// };
+
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        //This script expects an element with an ID = "counter". You can change that to what ever you want. 
+        var counter = document.getElementById("counter");
+        var current_minutes = mins-1
+        seconds--;
+        counter.innerHTML = "Time Remaining: " +  current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+            if(mins > 1){
+                countdown(mins-1);           
+            }
+        }
+    }
+    tick();
+}
+
+$('#restart').click(function(){
+
+    createArray();
+    letter2Grid();
+    countdown(3);
+})
 
 });
