@@ -13,6 +13,14 @@
   font-size: 25px;
 }
 
+.score {
+  display: grid;
+  grid-template-columns: repeat(7, 60px);
+  grid-template-rows: 2em;
+  grid-auto-rows: 2em;
+  justify-content: center;
+}
+
 ul {
   padding: 0;
   margin: 0;
@@ -25,6 +33,16 @@ li {
   border-style: solid;
   border-color: black;
   padding-bottom: 8px;
+}
+
+.scoreList {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.btn {
+  margin: 5px;
 }
 
 #grid {
