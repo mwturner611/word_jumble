@@ -187,39 +187,44 @@ const createArray = () => {
     window.localStorage.setItem("scramble",JSON.stringify(finalArray));
 };
 
-// const timer = () => {
-    
-//     let timer = $('#timer');
-//     let time = $('<h3></h3>')
-//         .text("Time Remaining: 3:00")
-//         .appendTo(timer);
-// };
+const timer = () => {
+    let time = document.getElementById('counter');
+    let minute = 2;
+    let seconds = 60;
+    let zero = "";
 
-function countdown(minutes) {
-    var seconds = 60;
-    var mins = minutes
-    function tick() {
-        //This script expects an element with an ID = "counter". You can change that to what ever you want. 
-        var counter = document.getElementById("counter");
-        var current_minutes = mins-1
-        seconds--;
-        counter.innerHTML = "Time Remaining: " +  current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-        if( seconds > 0 ) {
-            setTimeout(tick, 1000);
-        } else {
-            if(mins > 1){
-                countdown(mins-1);           
+    const removeOne = () => {
+        if (seconds > 0) {
+            if(seconds < 11){
+                zero = 0;
             }
+            else{
+                zero = "";
+            }
+            seconds--;
+            time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + zero + seconds.toString();
+            setTimeout(removeOne, 1000);
         }
-    }
-    tick();
-}
+        else {
+            if(minute < 1){
+                zero = 0;
+                time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + zero + seconds.toString();
+            }
+            else{
+                seconds = 60;
+                minute--;
+                time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + seconds.toString();
+                setTimeout(removeOne, 1000);
+            }
+        };
+    };
+    removeOne();
+};
 
 $('#restart').click(function(){
-
     createArray();
     letter2Grid();
-    countdown(3);
-})
+    timer();
+});
 
 });
