@@ -187,6 +187,7 @@ const createArray = () => {
     window.localStorage.setItem("scramble",JSON.stringify(finalArray));
 };
 
+// timer for countdown
 const timer = () => {
     let time = document.getElementById('counter');
     let minute = 2;
@@ -220,6 +221,21 @@ const timer = () => {
     };
     removeOne();
 };
+
+const findWord = (word) => {
+
+    const serverCall = {
+        "url": "api/search/"+word,
+        "type": 'GET'
+    }
+    $.ajax(serverCall).done(function (response) {
+        console.log(response);
+    });
+};
+
+$('#search').click(function(){
+    findWord("Ball")
+})
 
 $('#restart').click(function(){
     createArray();
