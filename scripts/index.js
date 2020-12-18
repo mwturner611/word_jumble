@@ -187,6 +187,7 @@ const createArray = () => {
     window.localStorage.setItem("scramble",JSON.stringify(finalArray));
 };
 
+// timer for countdown
 const timer = () => {
     let time = document.getElementById('counter');
     let minute = 2;
@@ -220,6 +221,21 @@ const timer = () => {
     };
     removeOne();
 };
+
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://wordsapiv1.p.rapidapi.com/words/baseball/definitions",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "2e0c8506d8mshe06be0cd2635443p1e20c5jsncb94367dc223",
+		"x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
 
 $('#restart').click(function(){
     createArray();

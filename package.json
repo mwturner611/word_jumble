@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mwturner611/word_jumble#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "sass": "^1.30.0"
   }
 }
