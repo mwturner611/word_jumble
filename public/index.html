@@ -22,7 +22,7 @@
         </div>
         <div class="row" id="grid">
             <div class="col-sm-2"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-8 box">
                 <ul id="col1">
                     <li id="d1">F</li>
                     <li id="d2">A</li>
@@ -55,17 +55,20 @@
                 <button id="restart" type="button" class="btn btn-primary">Start a New Puzzle</button>
             </div>
         </div>
-        <p>
+        <div class="row">
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Rules
             </button>
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapserExample" aria-expanded="false" aria-controls="collapserExample">
                 Scoring
             </button>
-            <button id="search" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsedExample" aria-expanded="false" aria-controls="collapsedExample">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsedExample" aria-expanded="false" aria-controls="collapsedExample">
                 Find Definitions
             </button>
-        </p>
+        </div>
+        <div class="row menu">
+          <div class="col-sm-2"></div>
+          <div class="col-lg-8">  
           <div class="collapse" id="collapseExample">
             <ul class="list-group">
                 <li class="list-group-item disabled">How to Play</li>
@@ -74,6 +77,13 @@
                 <li class="list-group-item">3. When time is up, players take turns reading out their word lists and work out their scores.  Longer words are worth more points.  Only words not written by another player count.</li>
               </ul>
           </div>
+          </div>
+          <div class="col-sm-2"></div>
+          
+        </div>
+        <div class="row menu">
+          <div class="col-sm-2"></div>  
+          <div class="col-lg-8">
           <div class="collapse" id="collapserExample">
             <ol class="list-group">
                 <li class="list-group-item disabled">Scoring</li>
@@ -99,6 +109,25 @@
                 <li class="list-group-item">3. When time is up, players take turns reading out their word lists and work out their scores.  Longer words are worth more points.  Only words not written by another player count.</li>
             </ol>
           </div>
+          </div>
+          <div class="col-sm-2"></div> 
+        </div>
+        <div class="row menu">
+          <div class="col-sm-2"></div> 
+          <div class="col-lg-8">
+          <div class="collapse" id="collapsedExample">
+            <form>
+                <div class="form-group">
+                  <label for="searchWord">Enter a word below to find it's definition!</label>
+                  <input type="text" class="form-control" id="searchWord" aria-describedby="emailHelp" placeholder="A word here!">
+                  <button id='search' type="submit" class="btn btn-primary">Search</button>
+                </div>
+                
+              </form>
+          </div>
+          </div>
+          <div class="col-sm-2"></div> 
+        </div>
 
     </div>
 
