@@ -209,10 +209,10 @@ const timer = () => {
         else {
             if(minute < 1){
                 zero = 0;
-                time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + zero + seconds.toString();
+                time.innerHTML = "Time Remaining: 0:00";
             }
             else{
-                seconds = 60;
+                seconds = 59;
                 minute--;
                 time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + seconds.toString();
                 setTimeout(removeOne, 1000);
@@ -224,18 +224,26 @@ const timer = () => {
 
 const findWord = (word) => {
 
-    const serverCall = {
-        "url": "api/search/"+word,
-        "type": 'GET'
-    }
-    $.ajax(serverCall).done(function (response) {
-        console.log(response);
+    $.ajax('/api/search/'+word, {
+        type: 'GET'
+    })
+    .then(function(res){
+
+        let display = word + ': ' + res.definition; 
+
+        document.getElementById('def').innerHTML= display;
+
+        return;
     });
 };
 
-$('#search').click(function(){
-    findWord("Ball")
-})
+
+$('#search').click(function(event){
+    event.preventDefault();
+    
+    findWord("Ball");
+
+});
 
 $('#restart').click(function(){
     createArray();
