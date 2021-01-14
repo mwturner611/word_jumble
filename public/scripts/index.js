@@ -240,8 +240,12 @@ const findWord = (word) => {
 
 $('#search').click(function(event){
     event.preventDefault();
+
+    let search = $('#searchWord');
     
-    findWord("Ball");
+    let word = search.val().trim();
+
+    findWord(word);
 
 });
 
