@@ -147,30 +147,9 @@ const randomDiceOrder = () => {
     return(newNbr);    
 };
 
-// random nbr in dice
+// random nbr on a die
 const randomRoll = () => {
     return(Math.floor((Math.random() * 6) + 1));
-};
-
-// put the letters on the screen
-const letter2Grid = () => {
-
-    let array = JSON.parse(window.localStorage.getItem("scramble"));
-
-    if (array){
-        for (let i = 1; i < 17; i++){
-            let id = 'd'+ i;
-            let letter = array[i-1];
-            document.getElementById(id).innerHTML=`${letter}`
-        };
-    }
-    else{
-        for (let i = 1; i < 17; i++){
-            let id = 'd'+ i;
-            let letter = 'W';
-            document.getElementById(id).innerHTML=`${letter}`
-        };
-    };  
 };
 
 // create the final array
@@ -178,13 +157,32 @@ const createArray = () => {
     let finalArray = [];
 
     let diceOrder = randomDiceOrder();
-    
-    for (let i = 0; i < diceOrder.length; i++){
+
+    const formArray = (item) => {
         let dice = randomRoll();
 
-        finalArray.push(diceArray[diceOrder[i]][dice]);
-    }
+        finalArray.push(diceArray[item][dice]);
+    };
+
+    diceOrder.forEach(formArray);
+   
     window.localStorage.setItem("scramble",JSON.stringify(finalArray));
+};
+
+// put the letters on the screen
+const letter2Grid = () => {
+
+    let array = JSON.parse(window.localStorage.getItem("scramble"));
+
+    const addAltr = (item,index) => {
+        let nbr = index + 1;
+        let id = 'd' + nbr;
+        document.getElementById(id).innerHTML= item;
+    }
+
+    if (array){
+        array.map(addAltr);
+    }; 
 };
 
 // timer for countdown
@@ -209,7 +207,7 @@ const timer = () => {
         else {
             if(minute < 1){
                 zero = 0;
-                time.innerHTML = "Time Remaining: 0:00";
+                time.innerHTML = "Time Remaining: STOP!!! Time's up!";
             }
             else{
                 seconds = 59;
@@ -222,8 +220,8 @@ const timer = () => {
     removeOne();
 };
 
+// make the ajax call to our server side route
 const findWord = (word) => {
-
     $.ajax('/api/search/'+word, {
         type: 'GET'
     })
@@ -237,7 +235,7 @@ const findWord = (word) => {
     });
 };
 
-
+// click event for definition search
 $('#search').click(function(event){
     event.preventDefault();
 
@@ -249,6 +247,7 @@ $('#search').click(function(event){
 
 });
 
+// click event triggering the grid related functions
 $('#restart').click(function(){
     createArray();
     letter2Grid();

@@ -1,3 +1,9 @@
+.scoreList, li {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
 .container-flex {
   margin: 10px;
   padding: 10px;
@@ -29,16 +35,16 @@ ul {
 li {
   list-style-type: none;
   padding-top: 20px;
-  border: 1px;
-  border-style: solid;
-  border-color: black;
   padding-bottom: 8px;
 }
 
-.scoreList {
-  border: 1px;
-  border-style: solid;
-  border-color: black;
+.form-group {
+  padding-top: 15px;
+  padding-right: 25px;
+  padding-left: 25px;
+  border: solid;
+  border-color: gray;
+  border-width: 1px;
 }
 
 .btn {
@@ -55,20 +61,12 @@ li {
 }
 
 .menu {
-  margin-top: 15px;
-}
-
-input {
   margin-bottom: 15px;
 }
 
-.form-group {
-  padding-top: 15px;
-  padding-right: 25px;
-  padding-left: 25px;
-  border: solid;
-  border-color: gray;
-  border-width: 1px;
+input {
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 /*# sourceMappingURL=style.css.map */

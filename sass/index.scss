@@ -1,44 +1,65 @@
-.container-flex {
-    margin: 10px;
-    padding: 10px;
-    text-align: center
+// variables
+$p-margin: 10px;
+$p-color: black;
+$s-color: gray;
+$p-align: center;
+$p-border: solid;
+
+// mixin created
+@mixin grid_display($display,$repNbr,$repPx,$rowEM,$justify){
+    display: $display;
+    grid-template-columns: repeat($repNbr, $repPx);
+    grid-template-rows: $rowEM;
+    grid-auto-rows: $rowEM; 
+    justify-content: $justify;
 }
 
+// extension
+%border-style{
+    border: 1px;
+    border-style: $p-border;
+    border-color: $p-color;
+}
+
+.container-flex {
+    margin: $p-margin;
+    padding: $p-margin;
+    text-align: $p-align
+}
+
+// call mixin
 .box {
-    display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: 5em;
-    grid-auto-rows: 5em;
-    // height: 25em; 
-    justify-content: center;
+    @include grid_display(grid,4,80px,5em,$p-align);
     font-size: 25px;
 }
 .score {
-    display: grid;
-    grid-template-columns: repeat(7, 60px);
-    grid-template-rows: 2em;
-    grid-auto-rows: 2em;
-    // height: 25em; 
-    justify-content: center;
+    @include grid_display(grid,7,60px,2em,$p-align)
 }
 ul{
     padding: 0;
-    margin: 0;
-    
+    margin: 0;    
 }
 
+// use border extension
 li{
     list-style-type: none;
     padding-top: 20px;
-    border: 1px;
-    border-style: solid;
-    border-color: black;
+    @extend %border-style;
     padding-bottom: 8px;
 }
+
+// use border extension
 .scoreList {
-    border: 1px;
-    border-style: solid;
-    border-color: black;
+    @extend %border-style;
+}
+
+.form-group{
+    padding-top:15px;
+    padding-right: 25px;
+    padding-left: 25px;
+    border:$p-border;
+    border-color: $s-color;
+    border-width: 1px;
 }
 
 .btn {
@@ -53,18 +74,10 @@ li{
     font-size: 20px;
 }
 .menu {
-    margin-top:15px;
+    margin-bottom:15px;
 }
 
 input{
+    margin-top: $p-margin;
     margin-bottom: 15px;
-}
-
-.form-group{
-    padding-top:15px;
-    padding-right: 25px;
-    padding-left: 25px;
-    border:solid;
-    border-color: gray;
-    border-width: 1px;
 }
