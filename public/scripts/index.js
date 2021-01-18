@@ -221,18 +221,20 @@ const timer = () => {
 };
 
 // make the ajax call to our server side route
-const findWord = (word) => {
-    $.ajax('/api/search/'+word, {
+// make it an async function
+const findWord = async (word) => {
+    // await the ajax call to complete
+    await $.ajax('/api/search/'+word, {
         type: 'GET'
     })
     .then(function(res){
-
         let display = word + ': ' + res.definition; 
-
         document.getElementById('def').innerHTML= display;
-
-        return;
-    });
+    })
+    .catch(function(err){
+        let message = "Sorry, there's not a definition for that word.";
+        document.getElementById('def').innerHTML= display;
+    })
 };
 
 // click event for definition search
