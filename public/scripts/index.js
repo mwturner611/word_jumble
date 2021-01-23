@@ -185,6 +185,9 @@ const letter2Grid = () => {
     }; 
 };
 
+
+var timerID;
+
 // timer for countdown
 const timer = () => {
     let time = document.getElementById('counter');
@@ -202,7 +205,7 @@ const timer = () => {
             }
             seconds--;
             time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + zero + seconds.toString();
-            setTimeout(removeOne, 1000);
+            timerID = setTimeout(removeOne, 1000);
         }
         else {
             if(minute < 1){
@@ -213,7 +216,7 @@ const timer = () => {
                 seconds = 59;
                 minute--;
                 time.innerHTML = "Time Remaining: "+ minute.toString() + ":" + seconds.toString();
-                setTimeout(removeOne, 1000);
+                timerID = setTimeout(removeOne, 1000);
             }
         };
     };
@@ -224,17 +227,13 @@ const timer = () => {
 // make it an async function
 const findWord = async (word) => {
     // await the ajax call to complete
-    await $.ajax('/api/search/'+word, {
+    const response = await $.ajax('/api/search/'+word, {
         type: 'GET'
-    })
-    .then(function(res){
-        let display = word + ': ' + res.definition; 
-        document.getElementById('def').innerHTML= display;
-    })
-    .catch(function(err){
-        let message = "Sorry, there's not a definition for that word.";
-        document.getElementById('def').innerHTML= display;
-    })
+    }) 
+    let display = word + ': ' + response.definition; 
+    document.getElementById('def').innerHTML= display;
+   
+
 };
 
 // click event for definition search
@@ -251,6 +250,7 @@ $('#search').click(function(event){
 
 // click event triggering the grid related functions
 $('#restart').click(function(){
+    clearTimeout(timerID);
     createArray();
     letter2Grid();
     timer();
