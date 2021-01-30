@@ -185,8 +185,11 @@ const letter2Grid = () => {
     }; 
 };
 
-
 var timerID;
+
+const clear = () => {
+    clearTimeout(timerID);
+}
 
 // timer for countdown
 const timer = () => {
@@ -250,7 +253,7 @@ $('#search').click(function(event){
 
 // click event triggering the grid related functions
 $('#restart').click(function(){
-    clearTimeout(timerID);
+    clear();
     createArray();
     letter2Grid();
     timer();
