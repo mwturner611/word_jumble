@@ -154,17 +154,15 @@ const randomRoll = () => {
 
 // create the final array
 const createArray = () => {
-    let finalArray = [];
 
     let diceOrder = randomDiceOrder();
 
-    const formArray = (item) => {
-        let dice = randomRoll();
-
-        finalArray.push(diceArray[item][dice]);
+    const formArray = (die) => {
+        let roll = randomRoll();
+        return diceArray[die][roll];
     };
 
-    diceOrder.forEach(formArray);
+    let finalArray = diceOrder.map(formArray);
    
     window.localStorage.setItem("scramble",JSON.stringify(finalArray));
 };
@@ -181,7 +179,7 @@ const letter2Grid = () => {
     }
 
     if (array){
-        array.map(addAltr);
+        array.forEach(addAltr);
     }; 
 };
 
