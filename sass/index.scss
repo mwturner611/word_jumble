@@ -21,13 +21,14 @@ $p-border: solid;
     border-color: $p-color;
 }
 
+// use variables in flex container
 .container-flex {
     margin: $p-margin;
     padding: $p-margin;
     text-align: $p-align
 }
 
-// call mixin
+// call mixin for multiple uses of grids
 .box {
     @include grid_display(grid,4,80px,5em,$p-align);
     font-size: 25px;
