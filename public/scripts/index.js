@@ -145,19 +145,19 @@ const diceWork = {
     // method to randomize the dice order
     randomDiceOrder: function () {
 
+        // assign values of the origNbr array
+        let nbr = [...this.origNbr];
+
         // empty the new array from any prior calls
         this.newNbr = [];
 
         // loop through the orig array, randomly removing nbr's and sending them to the new array
         for (let i = 0; i < 16; i++){
-            let index = Math.floor((Math.random() * this.origNbr.length) + 0);
+            let index = Math.floor((Math.random() * nbr.length) + 0);
             
-            this.newNbr.push(this.origNbr[index]);
-            this.origNbr.splice(index,1);
+            this.newNbr.push(nbr[index]);
+            nbr.splice(index,1);
         }
-
-        // reset the origNbr array
-        this.origNbr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 
         return(this.newNbr);
     },
